@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import PersonController from '../controllers/personController';
-import { PersonService } from '../services/personService';
+import PersonService from '../services/personService';
 
 import neo4j from 'neo4j-driver';
 

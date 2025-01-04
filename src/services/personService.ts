@@ -1,7 +1,8 @@
+import { Session } from 'neo4j-driver';
 import { v4 as uuidv4 } from 'uuid';
 
 class PersonService {
-    constructor(private session: any) {}
+    constructor(private session: Session) {}
 
     async getAllPersons() {
         const result = await this.session.run('MATCH (p:Person) RETURN p');

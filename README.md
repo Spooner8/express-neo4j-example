@@ -6,7 +6,7 @@ This project is an Express API that interacts with a Neo4j graph database to per
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/express-neo4j-api.git
+   git clone https://github.com/spooner8/express-neo4j-example.git
    cd express-neo4j-api
    ```
 
@@ -28,26 +28,37 @@ The API will be available at `http://localhost:3000`.
 
 ## API Endpoints
 
-- **POST /persons**: Create a new person.
+***Nodes***
+
+- **POST /persons**: Create a new person. -> json {name, age, email}
+- **GET /persons**: Retrieve all person nodes.
 - **GET /persons/:id**: Retrieve a person by ID.
 - **PUT /persons/:id**: Update a person by ID.
 - **DELETE /persons/:id**: Delete a person by ID.
+
+***Relationships***
+
+- **POST /persons/relationship**: Create a new relationship. json -> {personId1, personId2, relationshipType}
 
 ## Docker
 
 To run the application using Docker, follow these steps:
 
-1. Build the Docker image:
+1. Update the docker.compose.yml
+   Set api image to your build name (recommendet -> express-neo4j-example)
+   Set connection conditions to the conditions in your neo4jConfig.ts (db and api)
+
+2. Build the Docker image:
    ```
-   docker build -t express-neo4j-api .
+   docker build -t express-neo4j-example .
    ```
 
-2. Start the services using Docker Compose:
+3. Start the services using Docker Compose:
    ```
-   docker-compose up
+   docker-compose up -d
    ```
 
-The application and Neo4j database will be running in containers.
+The application and Neo4j database will be running as container stack.
 
 ## License
 

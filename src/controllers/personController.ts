@@ -65,6 +65,16 @@ class PersonController {
             res.status(500).json({ error: (error as Error).message });
         }
     }
+
+    async createRelationship(req: Request, res: Response) {
+        try {
+            const { personId1, personId2, relationshipType } = req.body;
+            const relationship = await this.personService.createRelationship(personId1, personId2, relationshipType);
+            res.status(201).json(relationship);
+        } catch (error) {
+            res.status(500).json({ error: (error as Error).message });
+        }
+    }
 }
 
 export default PersonController;

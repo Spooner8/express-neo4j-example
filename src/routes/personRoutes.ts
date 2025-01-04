@@ -16,4 +16,5 @@ export function setRoutes(app: Router) {
     app.get('/persons/:id', personController.getPerson.bind(personController));
     app.put('/persons/:id', personController.updatePerson.bind(personController));
     app.delete('/persons/:id', personController.deletePerson.bind(personController));
+    app.post('/persons/relationship', personController.createRelationship.bind(personController));
 }

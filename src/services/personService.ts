@@ -40,6 +40,15 @@ class PersonService {
         );
         return result.records[0].get('deletedCount') > 0;
     }
+
+    async createRelationship(personId1: string, personId2: string, relationshipType: string) {
+        const result = await this.session.run(
+            'MATCH (a:Person {id: $personId1}), (b:Person {id: $personId2}) ' +
+            'CREATE (a)-[r:' + relationshipType + ']->(b) RETURN r',
+            { personId1, personId2 }
+        );
+        return result.records.length > 0 ? result.records[0].get('r').properties : null;
+    }
 }
 
 export default PersonService;

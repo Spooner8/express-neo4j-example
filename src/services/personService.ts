@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 class PersonService {
     constructor(private session: any) {}
 
@@ -7,9 +9,10 @@ class PersonService {
     }
 
     async createPerson(name: string, age: number, email: string) {
+        const id = uuidv4();
         const result = await this.session.run(
-            'CREATE (p:Person { name: $name, age: $age, email: $email}) RETURN p',
-            { name, age, email }
+            'CREATE (p:Person {id: $id, name: $name, age: $age, email: $email}) RETURN p',
+            { id, name, age, email }
         );
         return result.records[0].get('p').properties;
     }

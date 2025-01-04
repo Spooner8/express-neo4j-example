@@ -7,8 +7,8 @@ class PersonController {
     async createPerson(req: Request, res: Response) {
         try {
             const personData = req.body;
-            const { name, age } = personData;
-            const newPerson = await this.personService.createPerson(name, age);
+            const { name, age, email } = personData;
+            const newPerson = await this.personService.createPerson(name, age, email);
             res.status(201).json(newPerson);
         } catch (error) {
             res.status(500).json({ error: (error as Error).message });
@@ -23,7 +23,7 @@ class PersonController {
             res.status(500).json({ error: (error as Error).message });
         }
     }
-    
+
     async getPerson(req: Request, res: Response) {
         try {
             const personId = req.params.id;
@@ -59,7 +59,7 @@ class PersonController {
             const personId = req.params.id;
             const deleted = await this.personService.deletePerson(personId);
             if (deleted) {
-                res.status(204).send();
+                res.status(204).send({ message: deleted });
             } else {
                 res.status(404).json({ message: 'Person not found' });
             }

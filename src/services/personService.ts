@@ -10,9 +10,9 @@ export class PersonService {
         return result.records.map((record: any) => record.get('p').properties);
     }
 
-    async createPerson(name: string, age: number) {
-        const query = 'CREATE (p:Person {name: $name, age: $age}) RETURN p';
-        const result = await this.session.run(query, { name, age });
+    async createPerson(name: string, age: number, email: string) {
+        const query = 'CREATE (p:Person {name: $name, age: $age, email: $email}) RETURN p';
+        const result = await this.session.run(query, { name, age, email });
         return result.records[0].get('p').properties;
     }
 

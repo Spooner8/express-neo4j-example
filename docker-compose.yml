@@ -13,7 +13,7 @@ services:
       - neo4j_data:/data
 
   api:
-    image: neo4j-example
+    image: spoonersl/express-neo4j-example
     container_name: express-api
     ports:
       - "3000:3000"

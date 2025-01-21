@@ -67,9 +67,9 @@ The application and Neo4j database will be running as container stack.
 - API: The API will be available at `http://localhost:3000`.
 - DB: The Database will be available at `http://localhost:7474/browser/preview`
 - Protocol: ***bolt://***
-- Connection URL: ***localhost***
+- Connection URL: ***db*** (Service name)
 - Database user: ***neo4j*** (Default - or what you set in the neo4jConfig.ts)
-- Database Password: ***Test1234*** (Default - or what you set in the neo4jConfig.ts)
+- Database password: ***Test1234*** (Default - or what you set in the neo4jConfig.ts)
 
 ## Try yourself:
 If you want to have some Mockdata, you can simply past the content of the mockdata.txt file to your new Database. Paste it to the input and hit play in the right upper edge of the input.

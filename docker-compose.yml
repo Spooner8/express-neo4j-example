@@ -13,6 +13,9 @@ services:
       - neo4j_data:/data
 
   api:
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: express-neo4j-example
     container_name: express-api
     ports:

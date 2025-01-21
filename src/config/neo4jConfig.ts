@@ -1,5 +1,7 @@
 export const neo4jConfig = {
-    uri: 'bolt://localhost:7687',
-    username: 'neo4j',
-    password: 'Test1234'
+    port: '7687',
+    host: 'localhost',
+    protocol: 'bolt',
+    dbUser: 'neo4j',
+    dbPassword: 'Test1234'
 };

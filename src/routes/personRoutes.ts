@@ -1,11 +1,7 @@
 import { Router } from 'express';
 import PersonController from '../controllers/personController';
 import PersonService from '../services/personService';
-
-import neo4j from 'neo4j-driver';
-
-const driver = neo4j.driver('bolt://db:7687', neo4j.auth.basic('neo4j', 'Test1234'));
-const session = driver.session();
+import { session } from '../services/db';
 
 const personService = new PersonService(session);
 const personController = new PersonController(personService);

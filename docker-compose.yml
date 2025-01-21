@@ -1,27 +1,35 @@
 version: '3.8'
 
 services:
-  db:
-    image: neo4j:latest
-    container_name: neo4j
-    environment:
-      - NEO4J_AUTH=neo4j/Test1234
-    ports:
-      - "7474:7474"
-      - "7687:7687"
-    volumes:
-      - neo4j_data:/data
+    db:
+        image: neo4j:latest
+        container_name: neo4j
+        environment:
+            - NEO4J_AUTH=neo4j/Test1234
+        ports:
+            - '7474:7474'
+            - '7687:7687'
+        volumes:
+            - neo4j_data:/data
+        networks:
+            - neo4j_network
 
-  api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: express-neo4j-example
-    container_name: express-api
-    ports:
-      - "3000:3000"
-    depends_on:
-      - db
+    api:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: express-neo4j-example
+        container_name: express-api
+        ports:
+            - '3000:3000'
+        depends_on:
+            - db
+        networks:
+            - neo4j_network
 
 volumes:
-  neo4j_data:
+    neo4j_data:
+
+networks:
+    neo4j_network:
+        driver: bridge
